@@ -28,6 +28,13 @@ describe('bowling kata test suite', () => {
 
         expect(score()).toBe(14);
     });
+    it('should return 300 for a game with only strikes and 2 additional strikes', () => {
+        rollMany(10, 10);
+        roll(10);
+        roll(10);
+
+        expect(score()).toBe(300);
+    });
 });
 
 const rollMany = (pins, rolls) => {
