@@ -1,5 +1,18 @@
-const score = () => {
-  return 0;
+/*
+-/- -/- -/- -/- -/- -/- -/- -/- -/- -/- = 0
+
+1/1 1/1 1/1 1/1 1/1 1/1 1/1 1/1 1/1 1/1 = 20
+
+10 10 10 10 10 10 10 10 10 10 = 300
+*/
+let currentScore = 0;
+
+const roll = (pins) => {
+  return currentScore += pins;
 }
 
-module.exports.score = score;
+const score = () => {
+  return currentScore;
+}
+
+module.exports = { roll, score };
