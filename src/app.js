@@ -20,13 +20,19 @@ const score = () => {
     let score = 0;
     let scoreIndex = 0;
     for (let turn = 0; turn < 10; turn++) {
-        scoreOfTheTurn = scores[scoreIndex] + scores[scoreIndex + 1];
-        if (isSpare(scoreOfTheTurn)) {
-            score += spareBonus(scoreIndex);
-        } else {
-            score += scoreOfTheTurn;
+        if (scores[scoreIndex] === 10) {
+          score += 10 + scores[scoreIndex + 1] + scores[scoreIndex + 2];
+          scoreIndex++;
         }
-        scoreIndex += 2;
+        else {
+          scoreOfTheTurn = scores[scoreIndex] + scores[scoreIndex + 1];
+          if (isSpare(scoreOfTheTurn)) {
+              score += spareBonus(scoreIndex);
+          } else {
+              score += scoreOfTheTurn;
+          }
+          scoreIndex += 2;
+        }
     }
     return score;
 };
@@ -36,7 +42,7 @@ const resetScores = () => {
 };
 
 const isSpare = (scoreOfTheTurn) => {
-    return scoreOfTheTurn == 10;
+    return scoreOfTheTurn === 10;
 };
 
 const spareBonus = (scoreIndex) => {

@@ -21,6 +21,13 @@ describe('bowling kata test suite', () => {
 
         expect(score()).toBe(16);
     });
+	it('should return 14 for a game with a strike followed by 2 1s and 16 gutter balls', () => {
+		roll(10);
+		rollMany(1,2);
+		rollMany(0,16);
+
+		expect(score()).toBe(14);
+	})
 });
 
 const rollMany = (pins, rolls) => {
