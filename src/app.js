@@ -1,5 +1,11 @@
-const score = function () {
-    return 0;
-}
+let currentScore = 0;
 
-module.exports = score;
+const roll = (pins) => {
+    return (currentScore += pins);
+};
+
+const score = function () {
+    return currentScore;
+};
+
+module.exports = { roll, score };
