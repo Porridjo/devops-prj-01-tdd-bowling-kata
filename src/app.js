@@ -1,6 +1,6 @@
 let currentScore = 0;
 
-const roll = (pins) => {
+const roll = function(pins) {
     return (currentScore += pins);
 };
 
