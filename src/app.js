@@ -8,11 +8,10 @@ const score = function () {
     let score = 0;
     let scoreIndex = 0;
     for (let turn = 0; turn < 10; turn++) {
-        if (scores[scoreIndex] === 10) {
-            score += 10 + scores[scoreIndex + 1] + scores[scoreIndex + 2];
+        if (isStrike(scoreIndex)) {
+            score += strikeBonus(scoreIndex);
             scoreIndex++;
-          }
-          else {
+        } else {
             scoreOfTheTurn = scores[scoreIndex] + scores[scoreIndex + 1];
             if (isSpare(scoreOfTheTurn)) {
                 score += spareBonus(scoreIndex);
@@ -35,6 +34,14 @@ const isSpare = (scoreOfTheTurn) => {
 
 const spareBonus = (scoreIndex) => {
     return 10 + scores[scoreIndex + 2];
+};
+
+const isStrike = (scoreIndex) => {
+    return scores[scoreIndex] === 10;
+};
+
+const strikeBonus = (scoreIndex) => {
+    return 10 + scores[scoreIndex + 1] + scores[scoreIndex + 2];
 };
 
 module.exports = { roll, score, resetScores };
